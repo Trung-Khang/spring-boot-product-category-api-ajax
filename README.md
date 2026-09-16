@@ -1,5 +1,5 @@
 # Spring Boot Product Category API AJAX
-
+# COMMING SOON...
 Repository chuẩn bị cho bài tập Lập trình Web ngày 16/09/2026, phần 2 (tiếp theo).
 
 ## Mục tiêu bài tập
