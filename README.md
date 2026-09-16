@@ -17,13 +17,6 @@ Chuẩn bị một ứng dụng Spring Boot 3 có cấu trúc rõ ràng để l�
 - Springdoc OpenAPI (Swagger 3) ở mục 4
 - Maven và Spring Boot Test
 
-## Nội dung 4 tài liệu đã đọc
-
-1. **16_API RestFul.pdf**: khái niệm Web Service, RESTful API, HTTP methods (`GET`, `POST`, `PUT`, `DELETE`), mã trạng thái HTTP, JSON, Jackson/Gson và cách trả REST API trong Spring Boot với `@RestController`, `@RequestBody`, `ResponseEntity` và custom response. Phần cuối giới thiệu render REST API bằng jQuery.
-2. **HƯỚNG DẪN CRUD API CATEGORY TRÊN SPRING BOOT 3.pdf**: luồng xây dựng CRUD Category/Product trên Spring Boot 3: entity, JPA repository, service, response wrapper, lưu tệp upload, API controller và thử nghiệm API. Tài liệu cũng đối chiếu cách cũ trên Spring Boot 2.7.
-3. **CẤU HÌNH SWAGGER2 VÀ SWAGGER 3 TRÊN SPRING BOOT.pdf**: phân biệt Swagger 2/Springfox trên Spring Boot 2.7 với Swagger 3/Springdoc OpenAPI trên Spring Boot 3, cùng URL giao diện Swagger tương ứng.
-4. **HƯỚNG DẪN AJAX VỚI RESTFUL API TRONG SPRING BOOT.pdf**: thêm jQuery vào layout, gọi API Category/Product, hiển thị danh sách dữ liệu, dùng `FormData` để thêm/cập nhật (kể cả upload), và xóa bản ghi qua AJAX/Bootstrap modal.
-
 ## Kế hoạch thực hiện
 
 ### Mục 3 - CRUD REST API
