@@ -2,9 +2,6 @@
 
 Repository chuẩn bị cho bài tập Lập trình Web ngày 16/09/2026, phần 2 (tiếp theo).
 
-**Hạn nộp:** 20/09/2026  
-**Repository:** <https://github.com/Trung-Khang/spring-boot-product-category-api-ajax>
-
 ## Mục tiêu bài tập
 
 Chuẩn bị một ứng dụng Spring Boot 3 có cấu trúc rõ ràng để lần lượt xây dựng API REST cho Category và Product, tài liệu hóa API, rồi kết nối giao diện bằng AJAX. Hiện repository chỉ là bộ khung; chưa có chức năng nghiệp vụ.
