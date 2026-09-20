@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 @Entity @Table(name = "Products", uniqueConstraints = @UniqueConstraint(name = "uk_product_name", columnNames = "product_name"))
 public class Product {
- @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long productId;
- @Column(name="product_name", nullable=false, length=200) private String productName;
+ @Id @GeneratedValue(strategy=GenerationType.IDENTITY) @Column(name="id") private Long productId;
+ @Column(nullable=false, length=200) private String productName;
  @Column(nullable=false) private Integer quantity; @Column(nullable=false, precision=19, scale=2) private BigDecimal unitPrice;
  @Column(length=255) private String images; @Column(nullable=false, length=1000) private String description;
  @Column(nullable=false, precision=5, scale=2) private BigDecimal discount; @Column(nullable=false) private LocalDateTime createDate;
