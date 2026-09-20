@@ -43,7 +43,12 @@ mvn spring-boot:run
 
 The automated test profile uses H2 only. Runtime uses SQL Server and requires `DB_PASSWORD` to be set. No password, uploads, PDFs, IDE settings or build output are committed.
 
+## Item 4 - Swagger 3
+
+- [x] Springdoc OpenAPI is used; Swagger 2, Springfox and `@EnableSwagger2` are not used.
+- Swagger UI: `http://localhost:8082/swagger-ui/index.html`
+- OpenAPI JSON: `http://localhost:8082/v3/api-docs`
+
 ## Planned items
 
-- [ ] Item 4: Springdoc OpenAPI / Swagger 3 only (no Springfox or Swagger 2).
 - [ ] Item 5: Product API and Thymeleaf + jQuery/AJAX pages.
