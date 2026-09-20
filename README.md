@@ -1,105 +1,49 @@
-# Spring Boot Product Category API AJAX
-# COMMING SOON...
-Repository chuẩn bị cho bài tập Lập trình Web ngày 16/09/2026, phần 2 (tiếp theo).
+# Product Category REST API and AJAX
 
-## Mục tiêu bài tập
+Spring Boot 3 exercise: Category REST API, Swagger 3 documentation, and Product/Category AJAX CRUD.
 
-Chuẩn bị một ứng dụng Spring Boot 3 có cấu trúc rõ ràng để lần lượt xây dựng API REST cho Category và Product, tài liệu hóa API, rồi kết nối giao diện bằng AJAX. Hiện repository chỉ là bộ khung; chưa có chức năng nghiệp vụ.
+## Requirements
 
-## Công nghệ dự kiến sử dụng
+- Java 21 target, Maven, SQL Server 2019+.
+- Create database: `CREATE DATABASE webst2;`
+- Set credentials outside Git:
 
-- Java 21 và Spring Boot 3
-- Spring Web, Spring Data JPA, Validation
-- Thymeleaf cho giao diện render phía máy chủ khi cần
-- Lombok
-- Microsoft SQL Server JDBC Driver
-- jQuery/AJAX ở giai đoạn giao diện
-- Springdoc OpenAPI (Swagger 3) ở mục 4
-- Maven và Spring Boot Test
-
-## Kế hoạch thực hiện
-
-### Mục 3 - CRUD REST API
-
-- [ ] Thiết kế Entity và quan hệ Category - Product.
-- [ ] Cấu hình kết nối SQL Server bằng tệp môi trường cục bộ, không đưa thông tin nhạy cảm vào Git.
-- [ ] Tạo Repository, Service, DTO/response và Controller.
-- [ ] Hoàn thiện CRUD, kiểm tra validation, trạng thái HTTP và xử lý lỗi.
-- [ ] Kiểm thử API bằng công cụ phù hợp.
-
-### Mục 4 - API documentation
-
-- [ ] Chỉ bổ sung Springdoc OpenAPI cho Spring Boot 3.
-- [ ] Cấu hình metadata và kiểm tra Swagger UI.
-- [ ] Không triển khai Swagger 2 hoặc Springfox.
-
-> Lưu ý: mục 4 chỉ triển khai Swagger 3 bằng Springdoc OpenAPI, không triển khai Swagger 2/Springfox.
-
-### Mục 5 - AJAX giao diện
-
-- [ ] Tạo trang Thymeleaf và các tệp CSS/JS cần thiết.
-- [ ] Hiển thị danh sách Category và Product từ REST API.
-- [ ] Thêm, sửa, xóa bằng AJAX; dùng `FormData` nếu có upload.
-- [ ] Hiển thị thông báo lỗi/thành công và kiểm thử luồng người dùng.
-
-## Danh sách chức năng dự kiến
-
-### Category
-
-- Xem danh sách và chi tiết Category.
-- Thêm, cập nhật, xóa Category.
-- Kiểm tra tên Category trùng lặp.
-- Tìm kiếm và phân trang khi triển khai yêu cầu chi tiết.
-- Upload/quản lý icon khi đến phần upload.
-
-### Product
-
-- Xem danh sách và chi tiết Product.
-- Thêm, cập nhật, xóa Product.
-- Gán Product vào Category.
-- Kiểm tra tên Product trùng lặp.
-- Tìm kiếm và phân trang khi triển khai yêu cầu chi tiết.
-- Upload/quản lý hình ảnh khi đến phần upload.
-
-## Checklist tiến độ
-
-- [ ] Hoàn thành mục 3: CRUD REST API.
-- [ ] Hoàn thành mục 4: Springdoc OpenAPI / Swagger 3.
-- [ ] Hoàn thành mục 5: giao diện AJAX.
-- [ ] Kiểm thử toàn bộ luồng Category và Product.
-- [ ] Hoàn thiện hướng dẫn chạy.
-- [ ] Commit và push khi được yêu cầu.
-
-## Cấu trúc thư mục dự kiến
-
-```text
-spring-boot-product-category-api-ajax/
-├── src/
-│   ├── main/
-│   │   ├── java/vn/iotstar/
-│   │   │   ├── config/
-│   │   │   ├── controller/
-│   │   │   ├── dto/
-│   │   │   ├── entity/
-│   │   │   ├── repository/
-│   │   │   ├── service/
-│   │   │   └── service/impl/
-│   │   └── resources/
-│   │       ├── static/
-│   │       │   ├── css/
-│   │       │   └── js/
-│   │       └── templates/
-│   └── test/
-│       └── java/vn/iotstar/
-├── .gitignore
-├── pom.xml
-└── README.md
+```powershell
+$env:DB_USERNAME = "sa"
+$env:DB_PASSWORD = "your-password"
 ```
 
-## Hướng dẫn chạy
+The application uses `http://localhost:8082`, database `webst2`, and filesystem uploads in `uploads/`.
 
-Sẽ bổ sung sau khi bắt đầu cấu hình cơ sở dữ liệu và triển khai chức năng.
+## Item 3 - Category REST API
 
-## Phạm vi hiện tại
+- [x] Category CRUD with multipart icon upload.
+- [x] Safe UUID image filenames, type/extension/size validation and traversal protection.
+- [x] Duplicate-name protection, validation, centralized JSON errors and HTTP status codes.
+- [x] Category search and paging: `GET /api/category/search?q=&page=0&size=10`.
+- [x] Deletion is rejected if Products belong to the Category.
 
-Chưa tạo Entity, Repository, Service, Controller, AJAX, cấu hình Swagger, cấu hình SQL Server hoặc chức năng upload. Không đưa PDF, tài khoản hay mật khẩu SQL Server vào repository.
+Category endpoints:
+
+- `GET /api/category?q=`
+- `POST /api/category/getCategory?id=`
+- `POST /api/category/addCategory` (`categoryName`, optional `icon` multipart)
+- `PUT /api/category/updateCategory` (`categoryId`, `categoryName`, optional `icon` multipart)
+- `DELETE /api/category/deleteCategory?categoryId=`
+
+All APIs return `{ "status", "message", "body" }`.
+
+## Build and test
+
+```powershell
+mvn clean test
+mvn clean package
+mvn spring-boot:run
+```
+
+The automated test profile uses H2 only. Runtime uses SQL Server and requires `DB_PASSWORD` to be set. No password, uploads, PDFs, IDE settings or build output are committed.
+
+## Planned items
+
+- [ ] Item 4: Springdoc OpenAPI / Swagger 3 only (no Springfox or Swagger 2).
+- [ ] Item 5: Product API and Thymeleaf + jQuery/AJAX pages.
