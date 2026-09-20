@@ -49,6 +49,17 @@ The automated test profile uses H2 only. Runtime uses SQL Server and requires `D
 - Swagger UI: `http://localhost:8082/swagger-ui/index.html`
 - OpenAPI JSON: `http://localhost:8082/v3/api-docs`
 
-## Planned items
+## Item 5 - Product and AJAX CRUD
 
-- [ ] Item 5: Product API and Thymeleaf + jQuery/AJAX pages.
+- [x] Product CRUD, Category relation, validation, duplicate detection, search/paging and safe image upload.
+- [x] Category AJAX page: `http://localhost:8082/ajax/categories`
+- [x] Product AJAX page: `http://localhost:8082/ajax/products`
+- [x] Thymeleaf shell plus separate jQuery scripts in `static/js`.
+
+Product endpoints:
+
+- `GET /api/product?q=` and `GET /api/product/search?q=&page=0&size=10`
+- `GET /api/product/{id}`
+- `POST /api/product/addProduct` (multipart fields: `productName`, `quantity`, `unitPrice`, `description`, `discount`, `status`, `categoryId`, optional `imageFile`)
+- `PUT /api/product/updateProduct` (same fields plus `productId`)
+- `DELETE /api/product/deleteProduct?productId=`
